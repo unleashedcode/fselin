@@ -1,0 +1,49 @@
+TITLE: FSELIN
+        Written By, UnleashedCode Software
+
+OVERVIEW:
+    This program is to let users engage with FLight Sim Economy and get data by
+    scraping the website. The idea is that they have a linux interface and it
+    uses the command line. This allows users to set this up on raspberry pi's
+    or use over a network *ssh and be able to access information as they fly
+
+CONTEXT:
+    Primary reason for this software is an excersize in coding in Python
+    Secondary reasons is that I have Raspberry Pi's lying about that need a
+    purpose. 
+
+    It will benfit users who only have one monitor or users that have a spare
+    raspberry pi who want to get data as they fly
+    The website is very cumbersome to use so I want this to be a fast,
+    lightweight program which uses little resources but also displays the
+    information cleanly without the requirement of a GUI... Allowing for this
+    to be used over a network via telnet or ssh
+
+GOALS:
+    Use a CLI GUI system which will allow for clean representation of the
+    information. Allow easily users to interact with the information. Prevent
+    users from making mistakes or having to learn commands to use the program.
+
+    Cover The Basic informtion first and slowly to implement further
+    developments of FSEconomy into the program on a requirement bases. Priority
+    will be given to functionality over features
+
+    To upload changes regularly to the code on github and allow 
+    devs to modify the code.
+
+MILESTONES:
+    These will be marked and dated below:
+    26-06-2019 Project Creation Date
+
+FAQ:
+
+    Please find commonly asked questions with answers....
+
+PROCESS:
+    Programming Language = Python 3
+        requirments urwid module
+
+    System Requirements:
+        Something that has the capability of running Python......
+
+    this content
