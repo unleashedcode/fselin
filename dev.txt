@@ -1,0 +1,78 @@
+Dev list.....
+
+
+
+PROG OBJECTIVES
+
+1. list jobs at given icao
+2. list details on personally owned aircraft (fuel state, owner, specs, fee,
+    capacity, debt, payload cap, equipment, hours
+3. list information about icao (place, name, lat long, runway type, facilities
+4. show active assignments
+5. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+TO DO
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+NOT WORKING
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+OLD CODE
+
+
+
+
+
+
+
+
+NOTES
+
