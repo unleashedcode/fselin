@@ -4,15 +4,25 @@ import urwid
 import os
 import time
 
-# main menu - ()
-def load_main_menu()
-    menulist = {1: "Aircraft Sales", 2: "Airport Information", 3: "Your
-    Hanger", 4: "Exit"}
+# menu system - displays the menu
+def mainmenu(title, dictMainmenu):
 
     #print out the menu (urwid)_
     body = [urwid.Text(title), urwid.Divider()]
-    for c in menulist:
-        button = urwid.Button(c)
-        urwid.connect_signal(button, click, item_selected, c)
+    for choice in dictMainmenu:
+        button = urwid.Button(choice)
+        urwid.connect_signal(button, click, item_selected, choice)
         body.append(urwid.AttrMap(button, None, focus_map='reversed'))
-        choice(mainM
+    return urwid.ListBox(urwid.SimpleFocusListWalker(body))
+
+
+def item_chosen(button, choice):
+    response = urwid.Text([u'You chose ', choice, u'\n'])
+    done = urwid.Button(u'OK')
+    urwid.connect_signal(done, 'click', exit_program)
+    main.original_widget = urwwid.Filler(urwid.Pile([response,
+        urwid.AttrMap(done, None,focus_map='reversed')]))
+
+
+def exit_program(button):
+    raise urwid.ExitMainLoop()
