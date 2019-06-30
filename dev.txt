@@ -36,7 +36,13 @@ PROG OBJECTIVES
 
 
 TO DO
+'Programming the main  menu..... but also trying to make it load other menu's
+which the user selects..... trying to do this by just changing the 'main'
+syntax so it loads different menu types...... not sure what to do with anything
+else....
 
+might consider just having one page of menu's with everything on it... but feel
+this will be cluttered and not so intuitive for a user to use.
 
 
 
