@@ -4,9 +4,20 @@ import urwid
 import menu
 
 title = 'FSELIN 0.01'
-lst_mainmenu = ['Charter Data','Aircraft Sales', 'Airport Information', 'Your
-        Hanger', 'Main Menu', 'Exit']
+lst_mainmenu = ['Charter Data','Aircraft Sales', 'Airport Information',
+                'Your Hanger', 'Main Menu', 'Exit']
 lst_charters = ['Search for jobs at ICAO']
+
+
+# urwid pallete is a list of tuples which contain:
+# Name of the display, Foreground color and 16-color mode, Background color
+# Settings for monochrome (optional)
+# Foreground color and settings for 88 - 256 color modes (optional)
+# Background color for 88 - 256 color modes (optional)
+screentitle = 'FSE-LIN version 0.1a'
+foreground = 'yellow'
+backgroud = 'dark cyan'
+pallete = [(screentitle, foreground, background),]
 
 def mainmenu(title, menuchoices):
     #print out the menu (urwid)
@@ -28,23 +39,24 @@ def chartermenu(title, menuchoices):
 
 def choicechecker(choice):
 
-    if (choice = 'Main Menu'):
+    if (choice == 'Main Menu'):
         main = urwid.Padding(mainmenu('Main Menu', lst_mainmenu),
                 left=2, right=2)
     return main
 
-    if (choice = 'Charter Data'):
+    if (choice == 'Charter Data'):
         main = urwid.Padding(chartermenu('Charters', lst_charters),
                 left=2, right=2)
     return main
 
-    if (choice = 'Exit'):
+    if (choice == 'Exit'):
         urwid.connect_signal(done, 'click', exit_program)
 
 def item_chosen(button, choice):
     # with item chosen check to get relevant menu to pass in
     selected = choicechecker(choice)
-    if (choice == 'Charter Data'):
+    if (selected == 'Charter Data'):
+
 
     response = urwid.Text([u'You chose ', choice, u'\n'])
     done = urwid.Button(u'OK')
@@ -58,10 +70,16 @@ def exit_program(button):
 
 
 # load the menu (main menu)
+if (mainflag == 1):
+    main = urwid.Padding(mainmenu(title, lst_mainmenu), left=2, right=2)
 
-main = urwid.Padding(mainmenu(title, lst_mainmenu), left=2, right=2)
-top = urwid.Overlay(main, urwid.SolidFill(u'\N{MEDIUM SHADE}'),
-        align='center', width=('relative', 60),
-        valign='middle', height=('relative', 60),
-        min_width=20, min_height=9)
+else (mainflag == 2):
+    main = urwid.Padding(mainmenu(title,chartermenu), left=2, right=2)
+
+top = urwid.Overlay(main,urwid.SolidFill(u'\N{MEDIUM SHADE}'),
+                    align='center', width=('relative', 60),
+                    valign='middle', height=('relative', 60),
+                    min_width=20, min_height=9)
 urwid.MainLoop(top, palette=[('reversed', 'standout', '')]).run()
+
+
