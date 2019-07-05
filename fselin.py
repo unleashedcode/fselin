@@ -19,6 +19,7 @@ foreground = 'yellow'
 backgroud = 'dark cyan'
 pallete = [(screentitle, foreground, background),]
 
+# define the main menu
 def mainmenu(title, menuchoices):
     #print out the menu (urwid)
     body = [urwid.Text(title), urwid.Divider()]
@@ -31,6 +32,16 @@ def mainmenu(title, menuchoices):
 def chartermenu(title, menuchoices):
     #print out the charter menu (urwid)
     body = [urwid.Text(title), urwid.Divider()]
+    for choice in menuchoices:
+        button = urwid.Button(choice)
+        urwid.connect_signal(button, 'click', item_chosen, choice)
+        body.append(urwid.AttrMap(button, None, focus_map='reversed'))
+    return urwid.ListBox(urwid.SimpleFocusListWalker(body))
+
+
+def aircraftsalesmenu(title, menuchoices):
+    # print out the aircraft sales menu
+    body = [urwid.Text(title),urwid.Divider()]
     for choice in menuchoices:
         button = urwid.Button(choice)
         urwid.connect_signal(button, 'click', item_chosen, choice)
