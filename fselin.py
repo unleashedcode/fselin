@@ -16,7 +16,7 @@ lst_charters = ['Search for jobs at ICAO']
 # Background color for 88 - 256 color modes (optional)
 screentitle = 'FSE-LIN version 0.1a'
 foreground = 'yellow'
-backgroud = 'dark cyan'
+background = 'dark cyan'
 pallete = [(screentitle, foreground, background),]
 
 # define the main menu
@@ -50,6 +50,7 @@ def aircraftsalesmenu(title, menuchoices):
 
 def choicechecker(choice):
 
+    print(choice)
     if (choice == 'Main Menu'):
         main = urwid.Padding(mainmenu('Main Menu', lst_mainmenu),
                 left=2, right=2)
@@ -67,9 +68,17 @@ def item_chosen(button, choice):
     # with item chosen check to get relevant menu to pass in
     selected = choicechecker(choice)
     if (selected == 'Charter Data'):
+        response = urwid.Text([u'You chose the Charter menu',
+            choice, u'\n'])
+    elif (selected ==  'Main Menu'):
+            response = urwid.Text(['You chose the main menu',
+                choice, u'\n'])
+    elif (selected == 'Exit'):
+        response = urwid.Text([u'You chose to exit',
+            choice, u'\n'])
 
 
-    response = urwid.Text([u'You chose ', choice, u'\n'])
+    #response = urwid.Text([u'You chose ', choice, u'\n'])
     done = urwid.Button(u'OK')
     urwid.connect_signal(done, 'click', exit_program)
     main.original_widget = urwid.Filler(urwid.Pile([response,
@@ -78,15 +87,15 @@ def item_chosen(button, choice):
 def exit_program(button):
     raise urwid.ExitMainLoop()
 
-
-
+# if(mainflag == 1):
+#
 # load the menu (main menu)
-if (mainflag == 1):
-    main = urwid.Padding(mainmenu(title, lst_mainmenu), left=2, right=2)
+# if (mainflag == 1):
+#    main = urwid.Padding(mainmenu(title, lst_mainmenu), left=2, right=2)
 
-else (mainflag == 2):
-    main = urwid.Padding(mainmenu(title,chartermenu), left=2, right=2)
-
+# else (mainflag == 2):
+#    main = urwid.Padding(mainmenu(title,chartermenu), left=2, right=2)
+main = urwid.Padding(mainmenu(title,lst_charters), left=2, right=2)
 top = urwid.Overlay(main,urwid.SolidFill(u'\N{MEDIUM SHADE}'),
                     align='center', width=('relative', 60),
                     valign='middle', height=('relative', 60),
