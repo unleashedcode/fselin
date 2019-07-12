@@ -1,6 +1,8 @@
 #!/usr/bin/python3
 import urwid
 import menu
+import menuchoices
+
 
 title = 'FSELIN 0.01'
 lst_mainmenu = ['Charter Data', 'Aircraft Sales', 'Airport Information',
@@ -37,21 +39,13 @@ def exit_program(button):
 
 
 def item_chosen(button, choice):
-
-    if(choice == 'Aircraft Sales'):
-        response = urwid.Text(['You chose......', choice, u'\n'])
-
-    elif (choice == 'Charter Data'):
-        response = urwid.Text(['You chose.....', choice, u'\n'])
-    done = urwid.Button('shit')
-    urwid.connect_signal(done, 'click', exit_program)
-    main.original_widget = urwid.Filler(urwid.Pile([response, urwid.AttrMap(done,
-                                          None, focus_map='reversed')]))
+    # this calls the menu selection and it adds a screen on top
+    menuchoices.menuchoice_sel(main, button, choice)
 
 
 main = urwid.Padding(menu(title, lst_mainmenu), left=2, right=2)
-
-''' maybe making this run in a while loop with a flag system to change the
+'''
+maybe making this run in a while loop with a flag system to change the
 loading menus is the only way to make this work'''
 
 top = urwid.Overlay(main,urwid.SolidFill(u'\N{MEDIUM SHADE}'),
